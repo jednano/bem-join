@@ -1,0 +1,11 @@
+.editorconfig
+.eslintcache
+.npmignore
+.travis.yml
+ts*.json
+*.map
+*.tgz
+dist/**/*.test.js
+dist/**/*.test.d.ts
+src/
+bem-helpers-*/
