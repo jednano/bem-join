@@ -1,0 +1,105 @@
+const defaultOptions: BEMBlockOptions = {
+	elementSeparator: '__',
+	modifierSeparator: '--',
+}
+
+export interface BEMBlockOptions {
+	/**
+	 * The separator used between the BEM block and element name.
+	 * The default is "__" (e.g., foo__bar).
+	 */
+	elementSeparator?: string
+	/**
+	 * The separator used between the BEM element and modifier names.
+	 * The default is "--" (e.g., foo__bar--baz).
+	 */
+	modifierSeparator?: string
+}
+
+/**
+ * Returns a function that can be used to construct BEM class names.
+ */
+function bemBlock(blockNameOrOptions: string | BEMBlockOptions = {}) {
+	return ((typeof blockNameOrOptions === 'string')
+		? bemBlockOptions(defaultOptions)(blockNameOrOptions)
+		: bemBlockOptions({
+			...defaultOptions,
+			...blockNameOrOptions,
+		})
+	// tslint:disable-next-line:no-any
+	) as any
+
+	function bemBlockOptions(options: BEMBlockOptions) {
+		return (blockName: string) => (
+			blockModifiersOrElementName: BEMModifiers | string,
+			elementModifiers: BEMModifiers = {},
+		) => ((typeof blockModifiersOrElementName === 'string')
+			? joinBEMModifiers(
+				[
+					blockName,
+					blockModifiersOrElementName,
+				].join(options.elementSeparator),
+				elementModifiers,
+				options.modifierSeparator,
+			)
+			: joinBEMModifiers(
+				blockName,
+				blockModifiersOrElementName,
+				options.modifierSeparator,
+			)
+		).join(' ')
+
+		function joinBEMModifiers (
+			blockOrElement: string,
+			modifiers: BEMModifiers = {},
+			separator?: string,
+		) {
+			return [blockOrElement]
+				.concat(Object.keys(modifiers)
+					.filter(m => modifiers[m])
+					.map(m => [blockOrElement, m].join(separator)),
+				)
+		}
+	}
+}
+
+export default bemBlock as CurryBlockName & CurryBEMBlockOptions
+
+/**
+ * BEM modifiers for blocks and elements.
+ */
+export type BEMModifiers = {
+	[modifierName: string]: boolean
+}
+
+export interface CurryBlockName {
+	(
+		/**
+		 * The BEM block name on the left side of each join.
+		 */
+		blockName: string,
+	): ConstructClassNames
+}
+
+export interface ConstructClassNames {
+	(
+		/**
+		 * If specified, the first class name returned will be the BEM block and element names joined (e.g., foo__bar).
+		 */
+		element: string,
+		/**
+		 * If specified, the last class names returned will be the joined BEM block and element followed by any number of modifiers provided (e.g., foo__bar--mod1 foo__bar--mod2)
+		 */
+		elementModifiers?: BEMModifiers,
+	): string
+	(
+		/**
+		 * If specified, the last class names returned will be the BEM block name followed by any number of modifiers provided (e.g., foo--mod1 foo--mod2).
+		 */
+		blockModifiers?: BEMModifiers,
+	): string
+}
+
+export interface CurryBEMBlockOptions {
+	(options?: BEMBlockOptions): CurryBlockName
+}
