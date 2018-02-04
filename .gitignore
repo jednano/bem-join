@@ -8,3 +8,4 @@ node_modules/
 bem-helpers-*/
 coverage
 .nyc_output
+bem-join-*
