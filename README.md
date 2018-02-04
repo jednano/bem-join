@@ -40,9 +40,13 @@ The new `b` function from above can be called in two different ways:
 
 Constructs the BEM block class names (e.g., `foo foo--mod1 foo--mod2`).
 
+See the [`BEMModifiers`](#bemmodifiers-interface) section below for the modifiers interface.
+
 ### `b( elementName [, elementModifiers] )`
 
 Constructs the BEM element class names (e.g., `foo__bar foo__bar--mod1 foo__bar--mod2)`).
+
+See the [`BEMModifiers`](#bemmodifiers-interface) section below for the modifiers interface.
 
 _Let's see it in action!_
 
@@ -85,6 +89,16 @@ export const Foo = ({ blockName, children }) => {
       {children}
     </div>
   )
+}
+```
+
+### `BEMModifiers` Interface
+
+All modifiers must be provided as a hash with `Boolean` or `undefined` values:
+
+```ts
+export interface BEMModifiers {
+	[modifierName: string]: boolean | undefined
 }
 ```
 

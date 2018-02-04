@@ -68,8 +68,8 @@ export default bemJoin as CurryBlockName & CurryOptions
 /**
  * BEM modifiers for blocks and elements.
  */
-export type BEMModifiers = {
-	[modifierName: string]: boolean
+export interface BEMModifiers {
+	[modifierName: string]: boolean | undefined
 }
 
 export interface CurryBlockName {
