@@ -1,3 +1,6 @@
+## v1.1.2
+- Fix README typo.
+
 ## v1.1.1
 - Update npm keywords.
 

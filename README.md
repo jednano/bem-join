@@ -79,7 +79,7 @@ following HTML:
 
 Of course, if `isDark` and `isExpanded` were false, no `--dark` or `--expanded` modifiers would be constructed for them.
 
-For ultimate reuse, you might consider allowing all of your components to accept an optional `blockName` prop that changes the default block name. To do this, you just need to move your first `bem-join` call inside of your render function. Here's an exmaple of what that would look like:
+For ultimate reuse, you might consider allowing all of your components to accept an optional `blockName` prop that changes the default block name. To do this, you just need to move your first `bem-join` call inside of your render function. Here's an example of what that would look like:
 
 ```jsx
 export const Foo = ({ blockName, children }) => {
