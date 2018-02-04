@@ -5,15 +5,15 @@
 [![Travis Build Status](https://img.shields.io/travis/jedmao/bem-join.svg)](https://travis-ci.org/jedmao/bem-join)
 [![codecov](https://codecov.io/gh/jedmao/bem-join/branch/master/graph/badge.svg)](https://codecov.io/gh/jedmao/bem-join)
 [![Dependency Status](https://gemnasium.com/badges/github.com/jedmao/bem-join.svg)](https://gemnasium.com/github.com/jedmao/bem-join)
+[![Unicorn Approved](https://img.shields.io/badge/unicorn-approved-ff69b4.svg)](https://twitter.com/sindresorhus/status/457989012528316416?ref_src=twsrc%5Etfw&ref_url=https%3A%2F%2Fwww.quora.com%2FWhat-does-the-unicorn-approved-shield-mean-in-GitHub)
 
 [![npm](https://nodei.co/npm/bem-join.svg?downloads=true)](https://nodei.co/npm/bem-join/)
 
-A function used to construct BEM class names.
-
-## Introduction
-
-What is BEM? See [MindBEMding – getting your head ’round BEM syntax](https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
-for a primer.
+A single, [configurable](#custom-separators) function used to construct [BEM](https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) class names.
+- No dependencies.
+- Super tiny footprint @ under 500 bytes (min + gzip).
+- Works great with or without [React](http://facebook.github.io/react/).
+- Fresh [TypeScript](https://www.typescriptlang.org/) definitions included with each build/release.
 
 ## Installation
 
