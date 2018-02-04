@@ -1,9 +1,9 @@
-const defaultOptions: BEMBlockOptions = {
+const defaultOptions: BEMJoinOptions = {
 	elementSeparator: '__',
 	modifierSeparator: '--',
 }
 
-export interface BEMBlockOptions {
+export interface BEMJoinOptions {
 	/**
 	 * The separator used between the BEM block and element name.
 	 * The default is "__" (e.g., foo__bar).
@@ -19,17 +19,17 @@ export interface BEMBlockOptions {
 /**
  * Returns a function that can be used to construct BEM class names.
  */
-function bemBlock(blockNameOrOptions: string | BEMBlockOptions = {}) {
+function bemJoin(blockNameOrOptions: string | BEMJoinOptions = {}) {
 	return ((typeof blockNameOrOptions === 'string')
-		? bemBlockOptions(defaultOptions)(blockNameOrOptions)
-		: bemBlockOptions({
+		? bemJoinOptions(defaultOptions)(blockNameOrOptions)
+		: bemJoinOptions({
 			...defaultOptions,
 			...blockNameOrOptions,
 		})
 	// tslint:disable-next-line:no-any
 	) as any
 
-	function bemBlockOptions(options: BEMBlockOptions) {
+	function bemJoinOptions(options: BEMJoinOptions) {
 		return (blockName: string) => (
 			blockModifiersOrElementName: BEMModifiers | string,
 			elementModifiers: BEMModifiers = {},
@@ -63,7 +63,7 @@ function bemBlock(blockNameOrOptions: string | BEMBlockOptions = {}) {
 	}
 }
 
-export default bemBlock as CurryBlockName & CurryBEMBlockOptions
+export default bemJoin as CurryBlockName & CurryOptions
 
 /**
  * BEM modifiers for blocks and elements.
@@ -100,6 +100,6 @@ export interface ConstructClassNames {
 	): string
 }
 
-export interface CurryBEMBlockOptions {
-	(options?: BEMBlockOptions): CurryBlockName
+export interface CurryOptions {
+	(options?: BEMJoinOptions): CurryBlockName
 }
