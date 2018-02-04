@@ -1,5 +1,5 @@
 {
-  "name": "bemblock",
+  "name": "bem-join",
   "version": "1.0.0",
   "description": "A function used to construct BEM class names.",
   "keywords": [
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jedmao/bemblock.git"
+    "url": "https://github.com/jedmao/bem-join.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -27,7 +27,7 @@
     ]
   },
   "scripts": {
-    "clean": "rimraf coverage dist *.log bemblock-*",
+    "clean": "rimraf coverage dist *.log bem-join-*",
     "codecov": "codecov -f coverage/lcov.info",
     "prebuild": "npm run clean && npm run lint",
     "build": "tsc",
@@ -37,7 +37,7 @@
     "pretest": "npm run build -- --project tsconfig.test.json",
     "test": "nyc ava",
     "watch": "npm test -- --watch",
-    "prepack": "npm test"
+    "prepack": "npm test && npm run build"
   },
   "nyc": {
     "lines": 100,
@@ -60,7 +60,6 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
-    "lodash.curry": "^4.1.1",
     "nyc": "^11.4.1",
     "rimraf": "^2.6.2",
     "tslint": "^5.9.1",
