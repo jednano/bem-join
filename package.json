@@ -1,13 +1,17 @@
 {
   "name": "bem-join",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A function used to construct BEM class names.",
   "keywords": [
     "bem",
-    "css",
+    "join",
+    "react",
     "block",
+    "element",
+    "modifiers",
+    "css",
     "class",
-    "names",
+    "classname",
     "curry"
   ],
   "author": "Jed Mao <jedmao@outlook.com>",
