@@ -41,7 +41,9 @@
     "pretest": "npm run build -- --project tsconfig.test.json",
     "test": "nyc ava",
     "watch": "npm test -- --watch",
-    "prepack": "npm test && npm run build"
+    "prepack": "npm test && npm run build",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "nyc": {
     "lines": 100,
@@ -68,5 +70,9 @@
     "rimraf": "^2.6.2",
     "tslint": "^5.9.1",
     "typescript": "^2.7.1"
+  },
+  "snyk": true,
+  "dependencies": {
+    "snyk": "^1.69.7"
   }
 }
