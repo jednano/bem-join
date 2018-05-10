@@ -1,3 +1,9 @@
+## v1.1.3
+- Add package-lock.json.
+- Move snyk from dependency to dev dependency.
+- Update dependencies.
+- Specify `engines` in package.json.
+
 ## v1.1.2
 - Fix README typo.
 
