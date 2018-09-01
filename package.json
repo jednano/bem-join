@@ -66,11 +66,11 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
-    "nyc": "^11.7.3",
+    "nyc": "^13.0.1",
     "rimraf": "^2.6.2",
-    "snyk": "^1.80.0",
-    "tslint": "^5.10.0",
-    "typescript": "^2.8.3"
+    "snyk": "^1.94.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
   },
   "snyk": true,
   "engines": {
