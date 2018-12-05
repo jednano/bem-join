@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import bemJoin, { BEMModifiers } from './'
+import bemJoin, { IBEMModifiers } from './'
 
 test('calling bemJoin("foo")() returns "foo"', t => {
 	t.is(bemJoin('foo')(), 'foo')
@@ -83,14 +83,14 @@ test('calling bemJoin with partial options uses default options for the missing 
 	)
 })
 
-export interface TestModifiers extends BEMModifiers {
-	foo: boolean
+export interface ITestModifiers extends IBEMModifiers {
 	bar?: boolean
 	baz?: boolean
+	foo: boolean
 }
 
-export const testModifiers: TestModifiers = {
-	foo: true,
+export const testModifiers: ITestModifiers = {
 	bar: undefined,
+	foo: true,
 	// intentionally missing baz
 }

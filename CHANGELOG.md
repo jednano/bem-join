@@ -1,3 +1,6 @@
+## 2.0.0
+- **Breaking:** exported interfaces are now prefixed with an `I`.
+
 ## v1.1.3
 - Add package-lock.json.
 - Move snyk from dependency to dev dependency.

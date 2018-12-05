@@ -1,6 +1,6 @@
 {
   "name": "bem-join",
-  "version": "1.1.3",
+  "version": "2.0.0",
   "description": "A function used to construct BEM class names.",
   "keywords": [
     "bem",
@@ -43,7 +43,7 @@
     "watch": "npm test -- --watch",
     "prepack": "npm test && npm run build",
     "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "prepublishOnly": "npm run snyk-protect"
   },
   "nyc": {
     "lines": 100,
@@ -65,12 +65,14 @@
     "check-coverage": true
   },
   "devDependencies": {
+    "@jedmao/tsconfig": "^0.3.0",
+    "@jedmao/tslint": "^0.2.0",
     "ava": "^0.25.0",
-    "nyc": "^13.0.1",
+    "nyc": "^13.1.0",
     "rimraf": "^2.6.2",
-    "snyk": "^1.94.0",
+    "snyk": "^1.114.0",
     "tslint": "^5.11.0",
-    "typescript": "^3.0.3"
+    "typescript": "^3.2.1"
   },
   "snyk": true,
   "engines": {

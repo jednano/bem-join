@@ -4,7 +4,8 @@
 [![npm license](http://img.shields.io/npm/l/bem-join.svg?style=flat-square)](https://www.npmjs.org/package/bem-join)
 [![Travis Build Status](https://img.shields.io/travis/jedmao/bem-join.svg)](https://travis-ci.org/jedmao/bem-join)
 [![codecov](https://codecov.io/gh/jedmao/bem-join/branch/master/graph/badge.svg)](https://codecov.io/gh/jedmao/bem-join)
-[![Dependency Status](https://gemnasium.com/badges/github.com/jedmao/bem-join.svg)](https://gemnasium.com/github.com/jedmao/bem-join)
+[![min](https://badgen.net/bundlephobia/min/bem-join?label=min)](https://bundlephobia.com/result?p=bem-join)
+[![gzip](https://badgen.net/bundlephobia/minzip/bem-join?label=gzip)](https://bundlephobia.com/result?p=bem-join)
 [![Unicorn Approved](https://img.shields.io/badge/unicorn-approved-ff69b4.svg)](https://twitter.com/sindresorhus/status/457989012528316416?ref_src=twsrc%5Etfw&ref_url=https%3A%2F%2Fwww.quora.com%2FWhat-does-the-unicorn-approved-shield-mean-in-GitHub)
 
 [![npm](https://nodei.co/npm/bem-join.svg?downloads=true)](https://nodei.co/npm/bem-join/)
@@ -40,13 +41,13 @@ The new `b` function from above can be called in two different ways:
 
 Constructs the BEM block class names (e.g., `foo foo--mod1 foo--mod2`).
 
-See the [`BEMModifiers`](#bemmodifiers-interface) section below for the modifiers interface.
+See the [`IBEMModifiers`](#ibemmodifiers-interface) section below for the modifiers interface.
 
 ### `b( elementName [, elementModifiers] )`
 
 Constructs the BEM element class names (e.g., `foo__bar foo__bar--mod1 foo__bar--mod2)`).
 
-See the [`BEMModifiers`](#bemmodifiers-interface) section below for the modifiers interface.
+See the [`IBEMModifiers`](#ibemmodifiers-interface) section below for the modifiers interface.
 
 _Let's see it in action!_
 
@@ -92,12 +93,12 @@ export const Foo = ({ blockName, children }) => {
 }
 ```
 
-### `BEMModifiers` Interface
+### `IBEMModifiers` Interface
 
 All modifiers must be provided as a hash with `Boolean` or `undefined` values:
 
 ```ts
-export interface BEMModifiers {
+export interface IBEMModifiers {
 	[modifierName: string]: boolean | undefined
 }
 ```
