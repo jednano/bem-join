@@ -1,3 +1,6 @@
+## v1.1.4
+- Snyk security fix.
+
 ## v1.1.3
 - Add package-lock.json.
 - Move snyk from dependency to dev dependency.

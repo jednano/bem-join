@@ -1,6 +1,6 @@
 {
   "name": "bem-join",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "A function used to construct BEM class names.",
   "keywords": [
     "bem",
@@ -26,7 +26,7 @@
     "files": [
       "dist/**/*.test.js"
     ],
-    "source": [
+    "sources": [
       "dist/**/*.js"
     ]
   },
