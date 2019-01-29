@@ -1,6 +1,6 @@
 {
   "name": "bem-join",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "A function used to construct BEM class names.",
   "keywords": [
     "bem",
@@ -22,55 +22,63 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "ava": {
-    "files": [
-      "dist/**/*.test.js"
-    ],
-    "sources": [
-      "dist/**/*.js"
-    ]
-  },
   "scripts": {
-    "clean": "rimraf coverage dist *.log bem-join-*",
+    "clean": "rimraf coverage dist *.log* bem-join-*",
     "codecov": "codecov -f coverage/lcov.info",
-    "prebuild": "npm run clean && npm run lint",
+    "lint": "tslint -p tsconfig.test.json",
+    "prebuild": "rimraf dist",
     "build": "tsc",
-    "prebuild:watch": "npm run prebuild",
-    "build:watch": "tsc --watch",
-    "lint": "tslint --project tsconfig.test.json",
-    "pretest": "npm run build -- --project tsconfig.test.json",
-    "test": "nyc ava",
-    "watch": "npm test -- --watch",
-    "prepack": "npm test && npm run build",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "precover": "rimraf coverage",
+    "cover": "jest --coverage",
+    "pretest": "npm run lint",
+    "test": "jest --watch",
+    "prepublishOnly": "npm run lint && npm run cover && npm run build"
   },
-  "nyc": {
-    "lines": 100,
-    "statements": 100,
-    "functions": 100,
-    "branches": 100,
-    "include": [
-      "dist/**/*.js"
-    ],
-    "exclude": [
-      "dist/**/*.test.js"
-    ],
-    "reporter": [
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "pre-push": "npm run lint"
+    }
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "verbose": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
       "lcov",
       "text"
     ],
-    "cache": true,
-    "all": true,
-    "check-coverage": true
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   },
   "devDependencies": {
-    "ava": "^1.0.1",
-    "nyc": "^13.0.1",
-    "rimraf": "^2.6.2",
+    "@jedmao/tsconfig": "^0.3.0",
+    "@jedmao/tslint": "^0.4.2",
+    "@types/jest": "^23.3.13",
+    "@types/node": "^10.12.18",
+    "husky": "^1.3.1",
+    "jest": "^23.6.0",
+    "prettier": "^1.16.1",
+    "pretty-quick": "^1.10.0",
+    "rimraf": "^2.6.3",
     "snyk": "^1.94.0",
-    "tslint": "^5.11.0",
-    "typescript": "^3.0.3"
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.2.4"
   },
   "snyk": true,
   "engines": {
