@@ -1,11 +1,6 @@
-.npm
-.eslintcache
-*.log
+*.log*
 *.tgz
-npm-debug.log*
 dist/
 node_modules/
-bem-helpers-*/
-coverage
-.nyc_output
-bem-join-*
+coverage/
+bem-join-*/

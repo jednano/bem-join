@@ -1,9 +1,15 @@
 language: node_js
 
 node_js:
-  - "lts/*"
-  - "10"
-  - "8"
+  - 'lts/*'
+  - '10'
+  - '8'
+
+cache: npm
+
+script:
+  - npm run lint
+  - npm run cover
 
 after_success:
   - npm install codecov

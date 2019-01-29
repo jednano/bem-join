@@ -20,45 +20,43 @@ export interface BEMJoinOptions {
  * Returns a function that can be used to construct BEM class names.
  */
 function bemJoin(blockNameOrOptions: string | BEMJoinOptions = {}) {
-	return ((typeof blockNameOrOptions === 'string')
+	return (typeof blockNameOrOptions === 'string'
 		? bemJoinOptions(defaultOptions)(blockNameOrOptions)
 		: bemJoinOptions({
-			...defaultOptions,
-			...blockNameOrOptions,
-		})
-	// tslint:disable-next-line:no-any
-	) as any
+				...defaultOptions,
+				...blockNameOrOptions,
+		  })) as any // tslint:disable-next-line:no-any
 
 	function bemJoinOptions(options: BEMJoinOptions) {
 		return (blockName: string) => (
 			blockModifiersOrElementName: BEMModifiers | string,
 			elementModifiers: BEMModifiers = {},
-		) => ((typeof blockModifiersOrElementName === 'string')
-			? joinBEMModifiers(
-				[
-					blockName,
-					blockModifiersOrElementName,
-				].join(options.elementSeparator),
-				elementModifiers,
-				options.modifierSeparator,
-			)
-			: joinBEMModifiers(
-				blockName,
-				blockModifiersOrElementName,
-				options.modifierSeparator,
-			)
-		).join(' ')
+		) =>
+			(typeof blockModifiersOrElementName === 'string'
+				? joinBEMModifiers(
+						[blockName, blockModifiersOrElementName].join(
+							options.elementSeparator,
+						),
+						elementModifiers,
+						options.modifierSeparator,
+				  )
+				: joinBEMModifiers(
+						blockName,
+						blockModifiersOrElementName,
+						options.modifierSeparator,
+				  )
+			).join(' ')
 
-		function joinBEMModifiers (
+		function joinBEMModifiers(
 			blockOrElement: string,
 			modifiers: BEMModifiers = {},
 			separator?: string,
 		) {
-			return [blockOrElement]
-				.concat(Object.keys(modifiers)
+			return [blockOrElement].concat(
+				Object.keys(modifiers)
 					.filter(m => modifiers[m])
 					.map(m => [blockOrElement, m].join(separator)),
-				)
+			)
 		}
 	}
 }
@@ -72,14 +70,12 @@ export interface BEMModifiers {
 	[modifierName: string]: boolean | undefined
 }
 
-export interface CurryBlockName {
-	(
-		/**
-		 * The BEM block name on the left side of each join.
-		 */
-		blockName: string,
-	): ConstructClassNames
-}
+export type CurryBlockName = (
+	/**
+	 * The BEM block name on the left side of each join.
+	 */
+	blockName: string,
+) => ConstructClassNames
 
 export interface ConstructClassNames {
 	(
@@ -100,6 +96,7 @@ export interface ConstructClassNames {
 	): string
 }
 
-export interface CurryOptions {
-	(options?: BEMJoinOptions): CurryBlockName
-}
+export type CurryOptions = (options?: BEMJoinOptions) => CurryBlockName
+
+// @ts-ignore
+module.exports = Object.assign(exports.default, exports)
