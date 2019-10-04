@@ -1,3 +1,7 @@
+## v1.2.1
+
+- Update dependencies (including security fixes).
+
 ## v1.2.0
 
 - **New:** Exports a CommonJS module for npm compatibility.
