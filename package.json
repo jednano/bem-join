@@ -32,7 +32,9 @@
     "cover": "jest --coverage",
     "pretest": "npm run lint",
     "test": "jest --watch",
-    "prepublishOnly": "npm run lint && npm run cover && npm run build"
+    "prepublishOnly": "npm run lint && npm run cover && npm run build",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -74,7 +76,6 @@
     "prettier": "^1.16.1",
     "pretty-quick": "^1.10.0",
     "rimraf": "^2.6.3",
-    "snyk": "^1.94.0",
     "ts-jest": "^23.10.5",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0",
@@ -83,5 +84,8 @@
   "snyk": true,
   "engines": {
     "node": ">=6"
+  },
+  "dependencies": {
+    "snyk": "^1.230.5"
   }
 }
