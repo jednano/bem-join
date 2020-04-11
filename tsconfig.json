@@ -1,12 +1,12 @@
 {
 	"extends": "@jedmao/tsconfig",
 	"compilerOptions": {
-		"outDir": "dist",
-		"lib": ["es6", "dom"],
+		"declaration": true,
 		"module": "commonjs",
 		"moduleResolution": "node",
+		"outDir": "dist",
 		"rootDir": "src",
-		"target": "es5"
+		"target": "ES2018"
 	},
-	"exclude": ["node_modules", "dist"]
+	"include": ["src/**/*.ts"]
 }

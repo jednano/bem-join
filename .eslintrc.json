@@ -1,0 +1,56 @@
+{
+	"env": {
+		"es6": true
+	},
+	"globals": {
+		"fetch": true
+	},
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"impliedStrict": true
+		},
+		"ecmaVersion": 6,
+		"project": "./tsconfig.json",
+		"sourceType": "module",
+		"tsconfigRootDir": "."
+	},
+	"plugins": ["@typescript-eslint"],
+	"extends": [
+		"eslint:recommended",
+		"prettier",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"rules": {
+		// Possible Errors
+		"no-async-promise-executor": "error",
+		"no-await-in-loop": "error",
+		"no-misleading-character-class": "error",
+		"no-template-curly-in-string": "error",
+		"require-atomic-updates": "error",
+
+		// TypeScript-ESLint
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/indent": "off",
+		"@typescript-eslint/no-explicit-any": "error",
+		"@typescript-eslint/no-this-alias": [
+			"error",
+			{
+				"allowDestructuring": true
+			}
+		],
+		"@typescript-eslint/no-use-before-define": "off"
+	},
+	"overrides": [
+		{
+			"env": {
+				"node": true,
+				"jest": true
+			},
+			"files": "**/*.test.ts",
+			"rules": {
+				"@typescript-eslint/no-explicit-any": "off"
+			}
+		}
+	]
+}

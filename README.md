@@ -1,8 +1,8 @@
 # bem-join
 
+[![GitHub Actions](https://github.com/jedmao/bem-join/workflows/Node%20CI/badge.svg?event=push)](https://github.com/jedmao/bem-join/actions)
 [![NPM version](http://img.shields.io/npm/v/bem-join.svg?style=flat)](https://www.npmjs.org/package/bem-join)
 [![npm license](http://img.shields.io/npm/l/bem-join.svg?style=flat-square)](https://www.npmjs.org/package/bem-join)
-[![Travis Build Status](https://img.shields.io/travis/jedmao/bem-join.svg)](https://travis-ci.org/jedmao/bem-join)
 [![codecov](https://codecov.io/gh/jedmao/bem-join/branch/master/graph/badge.svg)](https://codecov.io/gh/jedmao/bem-join)
 [![BundlePhobia Minified](https://badgen.net/bundlephobia/min/bem-join?label=min)](https://bundlephobia.com/result?p=bem-join)
 [![BundlePhobia Minified + gzip](https://badgen.net/bundlephobia/minzip/bem-join?label=min%2Bgzip)](https://bundlephobia.com/result?p=bem-join)
@@ -16,7 +16,7 @@ A single, [configurable](#custom-separators) function used to construct [BEM](ht
 - No dependencies.
 - Super tiny footprint @ under 500 bytes (min + gzip).
 - Works great with or without [React](http://facebook.github.io/react/).
-- Fresh [TypeScript](https://www.typescriptlang.org/) definitions included with each build/release.
+- Generated [TypeScript](https://www.typescriptlang.org/) definitions packaged with each build/release.
 
 ## Installation
 
@@ -26,13 +26,13 @@ $ npm install bem-join
 
 ## Usage
 
-The default export is a function that can be used to construct BEM class names. In most cases, you can just import this module and use it directly in each component. To illustrate this, let's create a simple `Section` component:
+The `bemJoin` function can be used to construct BEM class names. In most cases, you can just import this module and use it directly in each component. To illustrate this, let's create a simple `Section` component:
 
 ```jsx
 // /src/components/Section.jsx
-import bemJoin from 'bem-join'
+import { bemJoin } from 'bem-join';
 
-const b = bemJoin('section')
+const b = bemJoin('section');
 ```
 
 The above example uses the default options of `__` for the element separator and `--` for the modifiers. If you need to customize the element and modifier separators, see the [Custom Separators](#custom-separators) section below.
@@ -59,7 +59,7 @@ export const Section = ({ children, heading, isDark, isExpanded }) => (
     <h1 className={b('heading')}>{heading}</h1>
     <div className={b('body', { expanded: isExpanded })}>{children}</div>
   </section>
-)
+);
 ```
 
 If `isDark` and `isExpanded` props were both truthy, the result would be the
@@ -76,25 +76,23 @@ following HTML:
 </section>
 ```
 
-Of course, if `isDark` and `isExpanded` were false, no `--dark` or `--expanded` modifiers would be constructed for them.
+Of course, if `isDark` and `isExpanded` were falsey, no `--dark` or `--expanded` modifiers would be constructed for them.
 
 For ultimate reuse, you might consider allowing all of your components to accept an optional `blockName` prop that changes the default block name. To do this, you just need to move your first `bem-join` call inside of your render function. Here's an example of what that would look like:
 
 ```jsx
 export const Foo = ({ blockName, children }) => {
-  const b = bemJoin(blockName || 'foo')
-  return <div className={b()}>{children}</div>
-}
+  const b = bemJoin(blockName || 'foo');
+  return <div className={b()}>{children}</div>;
+};
 ```
 
 ### `BEMModifiers` Interface
 
-All modifiers must be provided as a hash with `Boolean` or `undefined` values:
+All modifiers must be provided as a `Record` object with `Boolean` or `undefined` values:
 
 ```ts
-export interface BEMModifiers {
-  [modifierName: string]: boolean | undefined
-}
+export type BEMModifiers = Record<string, boolean | undefined>;
 ```
 
 ### Custom Separators
@@ -103,27 +101,21 @@ If your application requires custom element and modifier separators, you can eas
 
 ```jsx
 // ./src/helpers/bem-join.js
-import bemJoin from 'bem-join'
+import { bemJoin as _bemJoin } from 'bem-join';
 
-export default bemJoin({
+export const bemJoin = _bemJoin({
   elementSeparator: '__', // <-- default
   modifierSeparator: '--', // <-- default
-})
+});
 ```
 
-The default-exported function is now ready to be used in your application. Here's an example import for a component:
+The exported function is now ready to be used in your application. Here's an example import for a component:
 
 ```jsx
-import bemJoin from '../helpers/bem-join'
+import { bemJoin } from '../helpers/bem-join';
 ```
 
 From here, everything is the same as previously stated in the [Usage](#usage) section.
-
-### ES6/2015 import
-
-```ts
-import parseCSSNumber from 'parse-css-number'
-```
 
 ## Testing
 
@@ -131,14 +123,4 @@ Run the following command:
 
 ```
 $ npm test
-```
-
-This will build scripts, run tests and generate a code coverage report. Anything less than 100% coverage will throw an error.
-
-### Watching
-
-For much faster development cycles, run the following command:
-
-```
-$ npm run watch
 ```
