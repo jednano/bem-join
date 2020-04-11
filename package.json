@@ -11,6 +11,7 @@
     "dist/esm/index.js"
   ],
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "clean": "rimraf coverage dist *.log* storage-*",
     "lint": "eslint src/**/*.ts",
     "prebuild": "rimraf dist",
@@ -85,6 +86,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jedmao/bem-join.git"
+  },
+  "resolutions": {
+    "dot-prop": "5.2.0",
+    "yargs-parser": "18.1.2"
   },
   "keywords": [
     "bem",
