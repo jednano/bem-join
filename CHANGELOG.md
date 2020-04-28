@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/jedmao/bem-join/compare/v2.0.1...v2.0.2) (2020-04-28)
+
+
+### Bug Fixes
+
+* remove preinstall (breaks install) ([881948c](https://github.com/jedmao/bem-join/commit/881948cc81d31dff2163d983c8fc51cb16ad7ada))
+
 ## [2.0.1](https://github.com/jedmao/bem-join/compare/v2.0.0...v2.0.1) (2020-04-28)
 
 
