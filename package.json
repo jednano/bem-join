@@ -22,7 +22,9 @@
     "cover": "jest --coverage",
     "pretest": "npm run lint",
     "test": "jest --watch",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -131,5 +133,9 @@
   },
   "engines": {
     "node": ">=10"
+  },
+  "snyk": true,
+  "dependencies": {
+    "snyk": "^1.316.1"
   }
 }
