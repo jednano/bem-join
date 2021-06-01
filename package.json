@@ -106,7 +106,7 @@
   "author": "Jed Mao <jedmao@outlook.com>",
   "license": "MIT",
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
+    "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^8.3.4",
     "@jedmao/semantic-release-npm-github-config": "^1.0.9",
     "@jedmao/tsconfig": "^0.3.0",
